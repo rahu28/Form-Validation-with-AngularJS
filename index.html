@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular Validation</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,100,700,900" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>  
+  <script src="js/app.js"></script>
+</head>
+<body>
+<div class="page">
+
+  <section class="card register" ng-app="myApp"
+    ng-controller="RegistrationController">
+  <form name="myform"
+    ng-submit="register()"
+    novalidate>
+
+    <div class="textintro">
+      <h1>Form Validation</h1>
+      <p>Please fill out the following form</p>
+      <p ng-show="message">{{ message }}</p>
+    </div>
+
+    <fieldset>
+      <input type="text" name="firstname" 
+        placeholder="First Name"
+        ng-model="user.firstname"
+        ng-required="true">
+        <p class="error validationerror" ng-show="myform.firstname.$invalid && myform.firstname.$touched">
+        You must fill out your first name.</p>
+
+      <input type="text" name="lastname"
+        placeholder="Last Name" 
+        ng-model="user.lastname"
+        ng-required="true">
+        <p class="error validationerror" ng-show="myform.lastname.$invalid && myform.lastname.$touched">
+        You must fill out your last name.</p>
+
+      <input type="email" name="email"
+        placeholder="Email" 
+        ng-model="user.email">
+        <p class="error validationerror" ng-show="myform.email.$invalid && myform.email.$touched">
+        This must be a valid email.</p>
+
+      <input type="password" name="password"
+        placeholder="Password" 
+        ng-model="user.password"
+        ng-minlength="6">
+        <p class="error validationerror" ng-show="myform.password.$invalid && myform.password.$touched">
+        Password must be at least 6 characters</p>
+    </fieldset>
+
+    <button type="submit" class="btn">Submit</button>
+  </form>
+</section>
+</div>
+</body>
+</html>
